@@ -5,21 +5,21 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "YaTeToca | Oportunidades visibles",
+  title: "YaTeTocaPerú | Premios reales. Oportunidades claras.",
   description: "Cupos limitados, oportunidades visibles y un proceso público y verificable.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "YaTeToca | Oportunidades visibles",
+    title: "YaTeTocaPerú | Premios reales. Oportunidades claras.",
     description: "Sabes cuántas oportunidades existen, cuántas se vendieron y cuántas quedan.",
     url: "/",
-    siteName: "YaTeToca",
-    images: [{ url: "/prize-iphone-17-pro.jpg", alt: "Premio disponible en YaTeToca" }],
+    siteName: "YaTeTocaPerú",
+    images: [{ url: "/prize-iphone-17-pro.jpg", alt: "Premio disponible en YaTeTocaPerú" }],
     type: "website",
     locale: "es_PE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "YaTeToca | Oportunidades visibles",
+    title: "YaTeTocaPerú | Premios reales. Oportunidades claras.",
     description: "Cupos limitados y oportunidades visibles.",
     images: ["/prize-iphone-17-pro.jpg"],
   },

@@ -1,4 +1,4 @@
--- YaTeToca · esquema inicial para Supabase/Postgres
+-- YaTeTocaPerú · esquema inicial para Supabase/Postgres
 -- Ejecutar completo en SQL Editor sobre un proyecto nuevo.
 
 create extension if not exists pgcrypto;

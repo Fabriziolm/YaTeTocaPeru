@@ -11,5 +11,5 @@ export const PACKS = [
   { id: "popular", quantity: 3, price: 50, label: "3 oportunidades", badge: "Más elegido" },
   { id: "value", quantity: 7, price: 100, label: "7 oportunidades", badge: "Mejor valor" },
 ] as const;
-export const BRAND = { provisionalName: "YaTeToca", whatsapp: "51999999999", yapeHolder: "NOMBRE DE EMPRESA", yapeNumber: "999 999 999", legalVersion: "DEMO-2026-01" };
+export const BRAND = { name: "YaTeTocaPerú", technicalName: "yatetocaperu", tagline: "Premios reales. Oportunidades claras.", whatsapp: "51999999999", yapeHolder: "NOMBRE DE EMPRESA", yapeNumber: "999 999 999", legalVersion: "DEMO-2026-01" };
 export type PackId = (typeof PACKS)[number]["id"];

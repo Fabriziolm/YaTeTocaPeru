@@ -1,4 +1,4 @@
--- Adapt the existing YaTeToca database without deleting current raffles or data.
+-- Adapt the existing YaTeTocaPerú database without deleting current raffles or data.
 
 alter table public.raffles
   add column if not exists pack_prices jsonb not null default '{"single":{"quantity":1,"price":20},"popular":{"quantity":3,"price":50},"value":{"quantity":7,"price":100}}',

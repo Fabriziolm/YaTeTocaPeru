@@ -1,4 +1,4 @@
-# YaTeToca
+# YaTeTocaPerú
 
 Landing mobile-first y panel básico para validar manualmente pagos por Yape, construidos con Next.js 16, TypeScript, Tailwind CSS y Supabase.
 
