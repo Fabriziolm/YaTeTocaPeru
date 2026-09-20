@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+/WhatsApp Image 2026-09-20 at 5.13.20 PM.jpeg
 
 # debug
 npm-debug.log*
