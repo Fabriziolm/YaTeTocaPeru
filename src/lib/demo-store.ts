@@ -1,0 +1,3 @@
+import type { AdminOrder } from "@/lib/types";
+const orders:AdminOrder[]=[{id:"demo-order-1",orderCode:"YTT-2026-00124",fullName:"Participante de demostración",dni:"••••1234",phone:"•••••6789",email:"demo@ejemplo.pe",quantity:3,amount:50,paymentOperation:"YAPE-DEMO",paymentProofUrl:null,status:"pending",createdAt:new Date().toISOString(),ticketNumbers:[]}];
+export const listDemoOrders=()=>orders; export const addDemoOrder=(o:AdminOrder)=>orders.unshift(o); export function updateDemoOrder(id:string,status:"validated"|"rejected"){const o=orders.find(x=>x.id===id);if(!o)return null;o.status=status;if(status==="validated"&&!o.ticketNumbers.length)o.ticketNumbers=Array.from({length:o.quantity},(_,i)=>288+i);return o;}

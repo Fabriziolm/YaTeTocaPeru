@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BRAND } from "@/config/site";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
+
+export default function Bases() {
+  return <Legal title="Bases legales — borrador de demostración"><Notice /><h2>1. Organizador</h2><p>Reemplazar con razón social, RUC, domicilio y datos de contacto del organizador autorizado.</p><h2>2. Total de oportunidades</h2><p>La demostración contempla 1,000 oportunidades numeradas. La versión definitiva debe precisar precio, vigencia y límite por persona.</p><h2>3. Participación y pagos</h2><p>Una solicitud queda pendiente hasta que el pago sea validado. Solo entonces se asignan números.</p><h2>4. Elección del ganador</h2><p>Definir el método público, verificable y autorizado, la fecha o condición exacta, la presencia notarial y el tratamiento si no se completan los cupos.</p><h2>5. Premio y entrega</h2><p>Definir características, valor, documentos, tributos, lugar, plazo de entrega y procedimiento de validación del ganador.</p><h2>6. Cancelaciones y devoluciones</h2><p>Definir supuestos, plazos y canal de atención antes de recibir pagos.</p><h2>7. Privacidad y reclamos</h2><p>Los datos se usarán para validar pagos, asignar números, contactar participantes y cumplir obligaciones legales. Incorporar responsable del banco de datos y Libro de Reclamaciones.</p><p className="muted mt-10 text-sm">Versión técnica: {BRAND.legalVersion}</p></Legal>;
+}
+function Notice() { return <div className="mb-8 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 text-amber-100"><b>No publicar ni aceptar pagos con este texto.</b><p className="mt-2 text-sm">Debe ser revisado por un abogado y completado después de obtener las autorizaciones aplicables.</p></div>; }
+function Legal({ title, children }: { title: string; children: React.ReactNode }) { return <main className="shell py-16"><Link href="/" className="text-blue-300">← Volver</Link><article className="prose prose-invert mt-10 max-w-3xl [&_h1]:font-[var(--font-display)] [&_h1]:text-4xl [&_h2]:mt-10 [&_h2]:font-[var(--font-display)] [&_h2]:text-2xl [&_p]:leading-7 [&_p]:text-slate-300"><h1>{title}</h1>{children}</article></main>; }

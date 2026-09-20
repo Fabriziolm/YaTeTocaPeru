@@ -1,0 +1,2 @@
+import { redirect } from "next/navigation"; import { AdminPanel } from "@/components/admin-panel"; import { getAdminUserId } from "@/lib/admin-auth"; import { listAdminOrders } from "@/lib/admin-data"; import { getActiveRaffle } from "@/lib/data";
+export const dynamic="force-dynamic"; export default async function AdminPage(){if(!await getAdminUserId())redirect("/admin/login");const [raffle,orders]=await Promise.all([getActiveRaffle(),listAdminOrders()]);return <AdminPanel totalSlots={raffle.totalSlots} initialOrders={orders}/>}

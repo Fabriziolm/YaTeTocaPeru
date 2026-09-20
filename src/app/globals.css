@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root { --ink: #050914; --panel: #0b1224; --line: #1d2b49; --blue: #2878ff; --lime: #b8ff3d; --soft: #9aa8bf; --font-body: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif; --font-display: "Bahnschrift", "Aptos Display", "Arial Narrow", sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ink); color: #f7faff; font-family: var(--font-body), sans-serif; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+.display { font-family: var(--font-display), sans-serif; }
+.shell { width: min(1180px, calc(100% - 32px)); margin-inline: auto; }
+.section { padding-block: clamp(72px, 10vw, 132px); }
+.grid-noise { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 34px 34px; }
+.glow { box-shadow: 0 0 0 1px rgba(40,120,255,.3), 0 28px 90px rgba(40,120,255,.2); }
+.muted { color: var(--soft); }
+.card { background: color-mix(in srgb, var(--panel) 90%, transparent); border: 1px solid var(--line); }
+.button-primary { display:inline-flex; min-height:54px; align-items:center; justify-content:center; border-radius:999px; padding:0 24px; background:var(--lime); color:#071009; font-weight:900; border:0; cursor:pointer; transition: transform .18s ease, filter .18s ease; }
+.button-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.button-secondary { display:inline-flex; min-height:48px; align-items:center; justify-content:center; border-radius:999px; padding:0 20px; color:white; border:1px solid #365078; background:#0b1428; font-weight:800; cursor:pointer; }
+.input { width:100%; border:1px solid #2a3a5b; border-radius:14px; background:#081020; color:white; min-height:50px; padding:12px 14px; }
+.input::placeholder { color:#667792; }
+.field-label { display:block; margin-bottom:7px; color:#cbd5e1; font-size:.84rem; font-weight:700; }
+.ticket-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; }
+@media (min-width: 640px) { .ticket-grid { grid-template-columns:repeat(10,1fr); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }

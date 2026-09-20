@@ -1,0 +1,5 @@
+type Props = { className?: string };
+export function Check({className="w-5 h-5"}:Props){return <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden><path d="m5 12 4.2 4L19 6.8" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+export function Arrow({className="w-5 h-5"}:Props){return <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+export function Close({className="w-5 h-5"}:Props){return <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>}
+export function Shield({className="w-6 h-6"}:Props){return <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 3 5 6v5c0 4.7 2.8 8.1 7 10 4.2-1.9 7-5.3 7-10V6l-7-3Z" stroke="currentColor" strokeWidth="1.8"/><path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>}

@@ -1,0 +1,8 @@
+"use client";
+import Script from "next/script";
+export function Analytics(){const ga=process.env.NEXT_PUBLIC_GA_ID,meta=process.env.NEXT_PUBLIC_META_PIXEL_ID,tiktok=process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;return <>
+ {ga&&<><Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive"/><Script id="ga" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga}');`}</Script></>}
+ {meta&&<Script id="meta" strategy="afterInteractive">{`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${meta}');fbq('track','PageView');`}</Script>}
+ {tiktok&&<Script id="tiktok" strategy="afterInteractive">{`!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=['page','track','load'];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat([].slice.call(arguments)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.load('${tiktok}');ttq.page()}(window,document,'ttq');`}</Script>}
+ </>}
+export function track(name:string,data:Record<string,unknown>={}){if(typeof window==="undefined")return;(window as typeof window&{dataLayer?:unknown[]}).dataLayer?.push({event:name,...data});const w=window as typeof window&{fbq?:(...args:unknown[])=>void;ttq?:{track:(n:string,d:Record<string,unknown>)=>void}};w.fbq?.("trackCustom",name,data);w.ttq?.track(name,data);}
