@@ -8,8 +8,8 @@ export const DEMO_RAFFLE = {
 };
 export const PACKS = [
   { id: "single", quantity: 1, price: 20, label: "1 oportunidad", badge: undefined },
-  { id: "popular", quantity: 3, price: 50, label: "3 oportunidades", badge: "Más elegido" },
-  { id: "value", quantity: 7, price: 100, label: "7 oportunidades", badge: "Mejor valor" },
+  { id: "popular", quantity: 3, price: 60, label: "3 oportunidades", badge: "Más elegido" },
+  { id: "value", quantity: 5, price: 100, label: "5 oportunidades", badge: "Mejor valor" },
 ] as const;
-export const BRAND = { name: "YaTeTocaPerú", technicalName: "yatetocaperu", tagline: "Premios reales. Oportunidades claras.", whatsapp: "51999999999", yapeHolder: "NOMBRE DE EMPRESA", yapeNumber: "999 999 999", legalVersion: "DEMO-2026-01" };
+export const BRAND = { name: "YaTeTocaPerú", technicalName: "yatetocaperu", tagline: "Donde ganar es más fácil", subtagline: "Premios reales, oportunidades claras.", whatsapp: "51999999999", yapeHolder: "NOMBRE DE EMPRESA", yapeNumber: "999 999 999", legalVersion: "DEMO-2026-01" };
 export type PackId = (typeof PACKS)[number]["id"];

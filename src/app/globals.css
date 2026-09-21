@@ -20,8 +20,8 @@ html {
 }
 body {
   margin: 0;
-  background: var(--ink);
-  color: #f7faff;
+  background: #ffffff;
+  color: var(--ink);
   font-family: var(--font-body), sans-serif;
 }
 button,
@@ -102,20 +102,99 @@ a {
   box-shadow: 10px 10px 0 var(--yellow);
 }
 .brand-stats {
-  background: var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+}
+.brand-stats .card {
+  background: #ffffff;
+  border-color: rgba(11,16,32,.12);
+}
+.brand-stats .muted,
+.transparency-section .muted {
+  color: #475569;
+}
+.transparency-section .card {
+  background: #ffffff;
+  border-color: #dbe4f0;
+}
+.opportunity-section {
+  background: #eef4ff;
+  color: var(--ink);
+}
+.opportunity-section .muted {
+  color: #475569;
+}
+.opportunity-section button {
+  border-color: #cbd5e1 !important;
+  background: #ffffff !important;
+  color: var(--ink);
+}
+.opportunity-section button.glow {
+  border-color: var(--blue) !important;
+  box-shadow: 8px 8px 0 var(--blue);
+}
+.opportunity-section button .muted {
+  color: #64748b;
+}
+.opportunity-section button .text-white {
+  color: var(--ink) !important;
+}
+.product-video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  background: var(--blue);
+  padding: 18px;
+  box-shadow: 12px 12px 0 var(--yellow);
+}
+.product-video__label {
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 9px 16px 9px 10px;
+  font-size: .8rem;
+  box-shadow: 0 8px 24px rgba(11,16,32,.2);
+}
+.product-video__label b,
+.product-video__label small {
+  display: block;
+}
+.product-video__label small {
+  color: #64748b;
+  font-size: .7rem;
+}
+.product-video__play {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--coral);
+  color: white;
+  font-size: .7rem;
 }
 .brand-mark {
-  display: inline-grid;
-  grid-template-columns: auto auto;
-  grid-template-areas: "ya te" "toca peru";
-  align-items: end;
-  column-gap: 0.08em;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
   font-family: var(--font-display);
   font-weight: 950;
   font-size: 1.45rem;
-  line-height: 0.72;
-  transform: rotate(-2deg);
+  line-height: .82;
+  transform: none;
   filter: drop-shadow(0 3px 0 rgba(11, 16, 32, 0.2));
+}
+.brand-mark__top,
+.brand-mark__bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: .08em;
 }
 .brand-mark__ya {
   grid-area: ya;
@@ -126,12 +205,10 @@ a {
   color: var(--lime);
 }
 .brand-mark__toca {
-  grid-area: toca;
   color: white;
   font-size: 1.15em;
 }
 .brand-mark__peru {
-  grid-area: peru;
   align-self: center;
   margin-left: 0.35rem;
   border-radius: 0.32rem;
@@ -141,7 +218,7 @@ a {
   font-family: var(--font-body);
   font-size: 0.35em;
   line-height: 1;
-  transform: rotate(-4deg);
+  transform: rotate(-2deg);
 }
 .brand-mark--compact {
   font-size: 1.7rem;

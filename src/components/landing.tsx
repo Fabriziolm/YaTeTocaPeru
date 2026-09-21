@@ -97,8 +97,11 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                 )}
               </div>
               <h1 className="display max-w-3xl text-[clamp(3.2rem,8vw,7rem)] font-black leading-[.88] tracking-[-.065em]">
-                Premios reales.<br />Oportunidades claras.
+                Donde ganar<br />es más fácil.
               </h1>
+              <p className="display mt-6 max-w-2xl text-2xl font-black leading-tight text-[#facc15] sm:text-4xl">
+                Premios reales, oportunidades claras.
+              </p>
               <p className="mt-7 max-w-xl text-base font-medium leading-7 text-blue-50 sm:text-xl">
                 ¿Hace cuánto participas y nunca ganas? Aquí ves cuántos cupos
                 existen, cuántos quedan y cómo se elige al ganador.
@@ -159,7 +162,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         </section>
 
         <section className="light-section section" id="premio">
-          <div className="shell grid gap-12 lg:grid-cols-2">
+          <div className="shell grid gap-12 lg:grid-cols-[.9fr_1.1fr]">
             <div>
               <p className="text-sm font-black text-[#2563ff]">
                 Premio principal
@@ -170,8 +173,23 @@ export function Landing({ raffle }: { raffle: Raffle }) {
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
                 {raffle.description}
               </p>
+              <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+                {raffle.features.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm font-semibold text-slate-700">
+                    <Check className="h-5 w-5 shrink-0 text-[#2563ff]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="brand-card rounded-[30px] p-6 sm:p-9">
+            <div className="product-media">
+              <div className="product-video">
+                <PhoneVisual images={raffle.prizeImages} />
+                <div className="product-video__label"><span className="product-video__play">▶</span><span><b>Conoce el premio</b><small>Vista del producto</small></span></div>
+              </div>
+              <p className="mt-4 text-sm font-semibold text-slate-500">Producto nuevo y sellado · Entrega estimada: {raffle.estimatedDelivery}</p>
+            </div>
+            <div className="hidden">
               <div className="flex items-start justify-between border-b border-white/10 pb-6">
                 <span className="muted">Valor aproximado</span>
                 <b className="display text-3xl">
@@ -219,15 +237,18 @@ export function Landing({ raffle }: { raffle: Raffle }) {
           </p>
         </section>
 
-        <section className="section bg-[#0b1020]" id="packs">
+        <section className="section opportunity-section" id="packs">
           <div className="shell">
             <div className="max-w-2xl">
               <h2 className="display text-4xl font-bold tracking-tight sm:text-6xl">
                 Elige cuántas oportunidades quieres ver a tu nombre.
               </h2>
-              <p className="muted mt-5 text-lg">
+              <p className="muted mt-5 hidden text-lg">
                 Sabes exactamente contra cuántas oportunidades participas. Menos
                 incertidumbre. Más claridad.
+              </p>
+              <p className="muted mt-5 text-lg">
+                Cada oportunidad cuesta S/20. Puedes comprar hasta 10 tickets por persona.
               </p>
             </div>
             <div className="mt-12 grid gap-4 lg:grid-cols-3">
@@ -289,10 +310,14 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                 );
               })}
             </div>
-            <p className="muted mt-5 max-w-3xl text-xs leading-5">
+            <p className="muted mt-5 hidden max-w-3xl text-xs leading-5">
               La probabilidad es una relación matemática entre oportunidades
               adquiridas y oportunidades totales. No garantiza un resultado
               ganador.
+            </p>
+            <p className="muted mt-5 max-w-3xl text-xs leading-5">
+              Precios transparentes: 1 ticket por S/20, 3 por S/60 y 5 por S/100.
+              Límite de compra: 10 tickets por persona.
             </p>
           </div>
         </section>
@@ -318,7 +343,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                   "Se asignan automáticamente, sin duplicados.",
                 ],
               ].map((step, i) => (
-                <article key={step[0]} className="bg-[#081020] p-7">
+                <article key={step[0]} className="bg-white p-7 text-[#0b1020]">
                   <span className="display text-5xl font-bold text-blue-500/35">
                     0{i + 1}
                   </span>
@@ -331,7 +356,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         </section>
 
         <section
-          className="section border-y border-white/8 bg-[#071020]"
+          className="section transparency-section border-y border-slate-200 bg-[#f7faff]"
           id="transparencia"
         >
           <div className="shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
