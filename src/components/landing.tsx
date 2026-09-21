@@ -184,8 +184,14 @@ export function Landing({ raffle }: { raffle: Raffle }) {
             </div>
             <div className="product-media">
               <div className="product-video">
-                <PhoneVisual images={raffle.prizeImages} />
-                <div className="product-video__label"><span className="product-video__play">▶</span><span><b>Conoce el premio</b><small>Vista del producto</small></span></div>
+                <iframe
+                  className="product-video__frame"
+                  src="https://www.youtube.com/embed/TNhX1uR2vO8"
+                  title="Video oficial del iPhone 17 Pro"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
               <p className="mt-4 text-sm font-semibold text-slate-500">Producto nuevo y sellado · Entrega estimada: {raffle.estimatedDelivery}</p>
             </div>
