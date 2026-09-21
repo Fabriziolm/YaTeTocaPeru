@@ -9,5 +9,4 @@ alter table public.orders drop constraint if exists orders_pack_type_check;
 alter table public.orders add constraint orders_pack_type_check check (pack_type in ('single','popular','value'));
 
 update public.raffles
-set pack_prices = '{"single":{"quantity":1,"price":20},"popular":{"quantity":3,"price":60},"value":{"quantity":5,"price":100}}'::jsonb
-where slug = 'iphone-17-pro-demo';
+set pack_prices = '{"single":{"quantity":1,"price":20},"popular":{"quantity":3,"price":60},"value":{"quantity":5,"price":100}}'::jsonb;
