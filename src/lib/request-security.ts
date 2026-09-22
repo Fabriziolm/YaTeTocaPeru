@@ -2,8 +2,12 @@ import type { NextRequest } from "next/server";
 
 export function isSameOrigin(request:NextRequest){
   const origin=request.headers.get("origin");
-  if(!origin)return true;
-  try{return new URL(origin).host===request.nextUrl.host;}catch{return false;}
+  const referer=request.headers.get("referer");
+  try {
+    if (origin) return new URL(origin).origin === request.nextUrl.origin;
+    if (referer) return new URL(referer).origin === request.nextUrl.origin;
+  } catch { return false; }
+  return request.headers.get("sec-fetch-site") === "same-origin";
 }
 
 export function clientIp(request:NextRequest){
