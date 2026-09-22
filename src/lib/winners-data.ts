@@ -27,10 +27,15 @@ const mapWinner = async (row: Row): Promise<WinnerStory> => ({
 
 export async function listPublishedWinners() {
   if (!hasSupabase) return [] as WinnerStory[];
-  const rows = await supabaseRequest<Row[]>(
-    "/rest/v1/winner_stories?status=eq.published&select=*&order=draw_date.desc",
-  );
-  return Promise.all(rows.map(mapWinner));
+  try {
+    const rows = await supabaseRequest<Row[]>(
+      "/rest/v1/winner_stories?status=eq.published&select=*&order=draw_date.desc",
+    );
+    return Promise.all(rows.map(mapWinner));
+  } catch (error) {
+    console.error("No se pudo cargar la galería de ganadores", error);
+    return [] as WinnerStory[];
+  }
 }
 
 export async function listAdminWinners() {
