@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">YaTeToca Perú — seis premios</title>
+  <desc id="desc">Pieza cuadrada para redes sociales.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#facc15"/><stop offset="1" stop-color="#ff5a7a"/></linearGradient></defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect x="42" y="42" width="996" height="996" rx="42" fill="#fff" opacity=".96"/>
+  <image href="/yatetoca-logo-blue.png" x="86" y="78" width="270" height="135" preserveAspectRatio="xMinYMin meet"/>
+  <text x="86" y="310" fill="#0b1020" font-family="Arial, sans-serif" font-size="48" font-weight="900">DONDE GANAR ES MÁS FÁCIL</text>
+  <text x="86" y="382" fill="#2563ff" font-family="Arial, sans-serif" font-size="44" font-weight="900">PREMIOS REALES. OPORTUNIDADES CLARAS.</text>
+  <rect x="86" y="450" width="908" height="180" rx="28" fill="#2563ff"/>
+  <text x="126" y="525" fill="#fff" font-family="Arial, sans-serif" font-size="44" font-weight="900">6 PREMIOS · 6 GANADORES</text>
+  <text x="126" y="590" fill="#b6f500" font-family="Arial, sans-serif" font-size="38" font-weight="900">Changan · iPhone · Cusco · S/200</text>
+  <text x="86" y="735" fill="#0b1020" font-family="Arial, sans-serif" font-size="78" font-weight="900">S/50</text>
+  <text x="310" y="735" fill="#0b1020" font-family="Arial, sans-serif" font-size="38" font-weight="800">por ticket</text>
+  <text x="86" y="808" fill="#0b1020" font-family="Arial, sans-serif" font-size="32" font-weight="700">Máximo 5 tickets por persona</text>
+  <text x="86" y="930" fill="#2563ff" font-family="Arial, sans-serif" font-size="38" font-weight="900">SORTEO EN VIVO · INSTAGRAM</text>
+  <text x="86" y="985" fill="#0b1020" font-family="Arial, sans-serif" font-size="28" font-weight="700">yatetocaperu.vercel.app</text>
+</svg>

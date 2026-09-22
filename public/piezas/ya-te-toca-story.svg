@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">YaTeToca Perú — Changan X7 Plus 2027</title>
+  <desc id="desc">Pieza vertical para historias: 3000 oportunidades, ticket desde 50 soles y seis premios.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563ff"/><stop offset="1" stop-color="#0b1020"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#0b1020" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <circle cx="930" cy="180" r="260" fill="#b6f500" opacity=".22"/>
+  <path d="M-80 1460 Q370 1270 1160 1500" fill="none" stroke="#facc15" stroke-width="70" opacity=".9"/>
+  <image href="/yatetoca-logo-blue.png" x="82" y="86" width="300" height="150" preserveAspectRatio="xMinYMin meet"/>
+  <text x="82" y="390" fill="#fff" font-family="Arial, sans-serif" font-size="42" font-weight="800">EL PREMIO ESTELAR</text>
+  <text x="82" y="500" fill="#fff" font-family="Arial, sans-serif" font-size="92" font-weight="900">CHANGAN</text>
+  <text x="82" y="600" fill="#facc15" font-family="Arial, sans-serif" font-size="104" font-weight="900">X7 PLUS</text>
+  <text x="82" y="670" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="800">MODELO 2027</text>
+  <image href="/changan-x7-plus.jpg" x="36" y="730" width="1008" height="620" preserveAspectRatio="xMidYMid meet" filter="url(#shadow)"/>
+  <rect x="82" y="1430" width="916" height="230" rx="36" fill="#fff"/>
+  <text x="126" y="1510" fill="#0b1020" font-family="Arial, sans-serif" font-size="42" font-weight="900">3000 oportunidades · 6 ganadores</text>
+  <text x="126" y="1590" fill="#2563ff" font-family="Arial, sans-serif" font-size="64" font-weight="900">Ticket desde S/50</text>
+  <text x="82" y="1760" fill="#b6f500" font-family="Arial, sans-serif" font-size="42" font-weight="900">SORTEO EN VIVO POR INSTAGRAM</text>
+  <text x="82" y="1830" fill="#fff" font-family="Arial, sans-serif" font-size="32" font-weight="700">yatetocaperu.vercel.app</text>
+</svg>

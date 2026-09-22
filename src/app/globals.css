@@ -183,8 +183,24 @@ a {
   display: block;
 }
 .prize-board {
-  background: #fff;
+  background: linear-gradient(180deg, #fff 0%, #f7faff 100%);
   color: var(--ink);
+}
+.reveal-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--blue);
+  font-size: .8rem;
+  font-weight: 950;
+  letter-spacing: .02em;
+}
+.reveal-kicker::before {
+  content: "";
+  width: 32px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--lime);
 }
 .prize-board__grid {
   display: grid;
@@ -192,23 +208,74 @@ a {
   gap: 14px;
 }
 .prize-tile {
+  position: relative;
   grid-column: span 3;
-  min-height: 190px;
+  min-height: 184px;
+  overflow: hidden;
   padding: 24px;
-  border: 3px solid var(--ink);
-  border-radius: 24px;
-  box-shadow: 7px 7px 0 rgba(11,16,32,.12);
-  transition: transform .25s ease;
+  border: 1px solid #dbe4f0;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(11,16,32,.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  animation: tile-in .65s both;
 }
-.prize-tile:hover { transform: translateY(-5px) rotate(-1deg); }
-.prize-tile:first-child { grid-column: span 6; min-height: 230px; }
-.prize-tile__number { font-size: .78rem; font-weight: 950; opacity: .55; }
-.prize-tile--blue { background: var(--blue); color: #fff; }
-.prize-tile--lime { background: var(--lime); }
-.prize-tile--yellow { background: var(--yellow); }
-.prize-tile--coral { background: var(--coral); color: #fff; }
+.prize-tile:hover { transform: translateY(-8px); box-shadow: 0 22px 38px rgba(11,16,32,.14); }
+.prize-tile:nth-child(2) { animation-delay: .08s; }
+.prize-tile:nth-child(3) { animation-delay: .16s; }
+.prize-tile:nth-child(4) { animation-delay: .24s; }
+.prize-tile:nth-child(5) { animation-delay: .32s; }
+.prize-tile:nth-child(6) { animation-delay: .40s; }
+.prize-tile:nth-child(7) { animation-delay: .48s; }
+.prize-tile--star { grid-column: span 6; min-height: 290px; border-color: var(--blue); background: #0b1020; color: #fff; }
+.prize-tile__top { display: flex; align-items: center; justify-content: space-between; }
+.prize-tile__number { color: var(--blue); font-size: .78rem; font-weight: 950; }
+.prize-tile--star .prize-tile__number { color: var(--lime); }
+.prize-tile__dot { width: 13px; height: 13px; border-radius: 50%; background: var(--accent, var(--blue)); box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent, var(--blue)) 20%, transparent); }
+.prize-tile__copy { position: relative; z-index: 2; margin-top: 42px; }
+.prize-tile--star .prize-tile__copy { margin-top: 8px; max-width: 48%; }
+.prize-tile__media { position: absolute; right: -8px; bottom: -18px; width: 60%; height: 68%; opacity: .9; transform: rotate(-4deg); transition: transform .4s ease; }
+.prize-tile:hover .prize-tile__media { transform: rotate(0deg) scale(1.04); }
+.prize-tile__media img { width: 100%; height: 100%; object-fit: contain; }
+.prize-tile--blue { --accent: var(--blue); }
+.prize-tile--lime { --accent: var(--lime); }
+.prize-tile--yellow { --accent: var(--yellow); }
+.prize-tile--coral { --accent: var(--coral); }
+@keyframes tile-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .prize-tile { animation: none; } }
+.campaign-kit {
+  background: #eef4ff;
+  color: var(--ink);
+}
+.campaign-kit__inner {
+  display: grid;
+  align-items: end;
+  gap: 2rem;
+  grid-template-columns: 1.1fr .9fr;
+}
+.campaign-kit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: flex-end;
+}
+.campaign-kit__script {
+  width: 100%;
+  color: var(--blue);
+  font-size: .85rem;
+  font-weight: 800;
+  text-align: right;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 @media (max-width: 760px) {
-  .prize-tile, .prize-tile:first-child { grid-column: span 6; min-height: 160px; }
+  .campaign-kit__inner { grid-template-columns: 1fr; }
+  .campaign-kit__actions { justify-content: flex-start; }
+  .campaign-kit__script { text-align: left; }
+}
+@media (max-width: 760px) {
+  .prize-tile, .prize-tile--star { grid-column: span 6; min-height: 160px; }
+  .prize-tile--star { min-height: 250px; }
 }
 .product-video__label small {
   color: #64748b;
@@ -224,6 +291,64 @@ a {
   color: white;
   font-size: .7rem;
 }
+.prize-visual { isolation: isolate; }
+.prize-visual__halo {
+  position: absolute;
+  inset: 8% 4% 14%;
+  border-radius: 48% 52% 45% 55%;
+  background: radial-gradient(circle, rgba(182,245,0,.62), rgba(37,99,255,.2) 52%, transparent 72%);
+  filter: blur(10px);
+  animation: halo-breathe 5s ease-in-out infinite;
+}
+.prize-visual__stage {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 48px 48px 110px 48px;
+  background: linear-gradient(145deg, #2563ff 0%, #1444c7 56%, #0b1020 100%);
+  box-shadow: 18px 18px 0 #facc15;
+}
+.prize-visual__stage::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: -95px;
+  top: -105px;
+  border: 28px solid rgba(182,245,0,.86);
+  border-radius: 50%;
+  animation: ring-drift 9s linear infinite;
+}
+.prize-visual__eyebrow {
+  position: absolute;
+  z-index: 2;
+  top: 24px;
+  left: 28px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue);
+  padding: 8px 14px;
+  font-size: .72rem;
+  font-weight: 900;
+}
+.prize-visual__car {
+  position: absolute;
+  inset: 70px 24px 72px;
+  animation: car-float 5s ease-in-out infinite;
+}
+.prize-visual__caption {
+  position: absolute;
+  z-index: 2;
+  right: 26px;
+  bottom: 24px;
+  left: 28px;
+}
+.prize-visual__caption b { color: #fff; }
+@keyframes halo-breathe { 0%,100% { transform: scale(.96); opacity: .75; } 50% { transform: scale(1.04); opacity: 1; } }
+@keyframes ring-drift { to { transform: rotate(360deg); } }
+@keyframes car-float { 0%,100% { transform: translateY(4px) rotate(-.5deg); } 50% { transform: translateY(-8px) rotate(.5deg); } }
+@media (prefers-reduced-motion: reduce) { .prize-visual__halo, .prize-visual__stage::after, .prize-visual__car { animation: none; } }
 .brand-mark {
   display: inline-flex;
   width: 142px;

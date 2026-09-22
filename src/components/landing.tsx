@@ -228,12 +228,16 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         <section className="prize-board section" aria-labelledby="prize-board-title">
           <div className="shell">
             <div className="max-w-2xl">
-              <p className="text-sm font-black text-[#2563ff]">Seis ganadores distintos</p>
-              <h2 id="prize-board-title" className="display mt-3 text-4xl font-black sm:text-6xl">El gran reveal no termina en la camioneta.</h2>
+              <p className="reveal-kicker">La secuencia del sorteo</p>
+              <h2 id="prize-board-title" className="display mt-3 text-4xl font-black tracking-tight sm:text-6xl">Seis premios. Una gran final.</h2>
               <p className="mt-5 text-lg leading-7 text-slate-600">Cada ticket entra a una dinámica con seis premios. Primero celebramos a los cuatro ganadores de S/200; luego llega el viaje, el iPhone y la gran final.</p>
             </div>
             <div className="prize-board__grid mt-10">
-              {STAR_PRIZES.map((prize, index) => <article className={`prize-tile prize-tile--${prize.tone}`} key={`${prize.title}-${index}`}><span className="prize-tile__number">0{index + 1}</span><h3 className="display mt-10 text-2xl font-black">{prize.title}</h3><p className="mt-2 text-sm font-semibold opacity-80">{prize.detail}</p></article>)}
+              {STAR_PRIZES.map((prize, index) => <article className={`prize-tile prize-tile--${prize.tone} ${index === 0 ? "prize-tile--star" : ""}`} key={`${prize.title}-${index}`}>
+                <div className="prize-tile__top"><span className="prize-tile__number">0{index + 1}</span><span className="prize-tile__dot" aria-hidden="true" /></div>
+                {index === 0 && <div className="prize-tile__media"><img src="/changan-x7-plus.jpg" alt="Changan X7 Plus 2027" /></div>}
+                <div className="prize-tile__copy"><h3 className="display text-2xl font-black">{prize.title}</h3><p className="mt-2 text-sm font-semibold">{prize.detail}</p></div>
+              </article>)}
             </div>
           </div>
         </section>
@@ -481,6 +485,21 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                   <p className="muted max-w-xl pt-3 text-sm leading-6">{a}</p>
                 </details>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="campaign-kit section" aria-labelledby="campaign-kit-title">
+          <div className="shell campaign-kit__inner">
+            <div>
+              <p className="text-sm font-black text-[#2563ff]">Kit de campaña</p>
+              <h2 id="campaign-kit-title" className="display mt-3 text-4xl font-black sm:text-6xl">Comparte la intriga.</h2>
+              <p className="mt-4 max-w-xl text-lg leading-7 text-slate-600">Piezas listas para historia y feed. El video corto sigue el mismo recorrido: intriga, reveal de la camioneta y llamada a participar.</p>
+            </div>
+            <div className="campaign-kit__actions">
+              <a className="button-primary" href="/piezas/ya-te-toca-story.svg" download>Descargar historia 9:16</a>
+              <a className="button-secondary" href="/piezas/ya-te-toca-post.svg" download>Descargar post 1:1</a>
+              <a className="campaign-kit__script" href="/piezas/capcut-storyboard.md" target="_blank" rel="noreferrer">Ver guion para CapCut</a>
             </div>
           </div>
         </section>
