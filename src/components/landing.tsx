@@ -229,13 +229,13 @@ export function Landing({ raffle }: { raffle: Raffle }) {
           <div className="shell">
             <div className="max-w-2xl">
               <p className="reveal-kicker">La secuencia del sorteo</p>
-              <h2 id="prize-board-title" className="display mt-3 text-4xl font-black tracking-tight sm:text-6xl">Seis premios. Una gran final.</h2>
+              <h2 id="prize-board-title" className="display mt-3 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl lg:text-[4.25rem]">Seis premios. Una gran final.</h2>
               <p className="mt-5 text-lg leading-7 text-slate-600">Cada ticket entra a una dinámica con seis premios. Primero celebramos a los cuatro ganadores de S/200; luego llega el viaje, el iPhone y la gran final.</p>
             </div>
             <div className="prize-board__grid mt-10">
               {STAR_PRIZES.map((prize, index) => <article className={`prize-tile prize-tile--${prize.tone} ${index === 0 ? "prize-tile--star" : ""}`} key={`${prize.title}-${index}`}>
                 <div className="prize-tile__top"><span className="prize-tile__number">0{index + 1}</span><span className="prize-tile__dot" aria-hidden="true" /></div>
-                {index === 0 && <div className="prize-tile__media"><img src="/changan-x7-plus.jpg" alt="Changan X7 Plus 2027" /></div>}
+                {index === 0 && <div className="prize-tile__media"><img src="/changan-x7-plus-cutout.png" alt="Changan X7 Plus 2027" /></div>}
                 <div className="prize-tile__copy"><h3 className="display text-2xl font-black">{prize.title}</h3><p className="mt-2 text-sm font-semibold">{prize.detail}</p></div>
               </article>)}
             </div>
@@ -264,7 +264,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         <section className="section opportunity-section" id="packs">
           <div className="shell">
             <div className="max-w-2xl">
-              <h2 className="display text-4xl font-bold tracking-tight sm:text-6xl">
+              <h2 className="display max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-[4.25rem]">
                 Elige cuántas oportunidades quieres ver a tu nombre.
               </h2>
               <p className="muted mt-5 hidden text-lg">
@@ -275,7 +275,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                 Cada oportunidad cuesta S/50. Puedes comprar hasta 5 tickets por persona.
               </p>
             </div>
-            <div className="mt-12 grid gap-4 lg:grid-cols-3">
+            <div className="packs-grid mt-12 grid gap-4 lg:grid-cols-3">
               {PACKS.map((pack, index) => {
                 const disabled = pack.quantity > available;
                 return (
@@ -283,12 +283,12 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                     key={pack.id}
                     disabled={disabled}
                     onClick={() => choose(pack.id)}
-                    className={`group relative overflow-hidden rounded-[28px] border p-7 text-left transition-transform enabled:hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-45 ${index === 1 ? "border-blue-400 bg-blue-500/12 glow" : "border-white/12 bg-[#0b1428]"}`}
+                    className={`pack-card group relative overflow-hidden text-left transition-transform enabled:hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-45 ${index === 1 ? "pack-card--featured" : ""}`}
                   >
                     <div className="flex min-h-7 justify-between">
                       {pack.badge ? (
                         <span
-                          className={`rounded-full px-3 py-1 text-xs font-black ${index === 1 ? "bg-blue-500 text-white" : "bg-[#b8ff3d] text-[#071009]"}`}
+                          className={`pack-card__badge ${index === 1 ? "pack-card__badge--blue" : ""}`}
                         >
                           {pack.badge}
                         </span>
@@ -412,15 +412,15 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         >
           <div className="shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
             <div>
-              <Shield className="h-10 w-10 text-[#b8ff3d]" />
+              <div className="transparency-leadmark"><Shield className="h-7 w-7" /><span>Datos abiertos de la dinámica</span></div>
               <h2 className="display mt-6 text-5xl font-bold tracking-tight">
-                Queremos que puedas ver todo.
+                Todo claro antes del live.
               </h2>
               <p className="muted mt-5 leading-7">
                 Cada cifra tiene una explicación. Los datos personales
                 permanecen privados.
               </p>
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="transparency-actions mt-7 flex flex-wrap gap-3">
                 <a className="button-secondary" href="/bases">
                   Ver bases legales
                 </a>
