@@ -7,14 +7,14 @@ import { MyTickets } from "@/components/my-tickets";
 import { PhoneVisual } from "@/components/phone-visual";
 import { PurchaseFlow } from "@/components/purchase-flow";
 import { TicketBrowser } from "@/components/ticket-browser";
-import { BRAND, PACKS, type PackId } from "@/config/site";
+import { BRAND, PACKS, STAR_PRIZES, type PackId } from "@/config/site";
 import { money, percent } from "@/lib/format";
 import type { Raffle } from "@/lib/types";
 
 const faqs = [
   [
     "¿Cuántas oportunidades existen?",
-    "Este sorteo tiene exactamente 1,000 oportunidades numeradas. La cantidad no cambia después de publicarse las bases.",
+    "Este sorteo tiene exactamente 3,000 oportunidades numeradas. La cantidad no cambia después de publicarse las bases.",
   ],
   [
     "¿Cuándo se realiza el sorteo?",
@@ -187,8 +187,8 @@ export function Landing({ raffle }: { raffle: Raffle }) {
               <div className="product-video">
                 <iframe
                   className="product-video__frame"
-                  src="https://www.youtube.com/embed/TNhX1uR2vO8"
-                  title="Video oficial del iPhone 17 Pro"
+                  src="https://www.youtube.com/embed/fT6v0mFuywI"
+                  title="Lanzamiento oficial de la Changan X7 Plus"
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -225,6 +225,19 @@ export function Landing({ raffle }: { raffle: Raffle }) {
           </div>
         </section>
 
+        <section className="prize-board section" aria-labelledby="prize-board-title">
+          <div className="shell">
+            <div className="max-w-2xl">
+              <p className="text-sm font-black text-[#2563ff]">Seis ganadores distintos</p>
+              <h2 id="prize-board-title" className="display mt-3 text-4xl font-black sm:text-6xl">El gran reveal no termina en la camioneta.</h2>
+              <p className="mt-5 text-lg leading-7 text-slate-600">Cada ticket entra a una dinámica con seis premios. Primero celebramos a los cuatro ganadores de S/200; luego llega el viaje, el iPhone y la gran final.</p>
+            </div>
+            <div className="prize-board__grid mt-10">
+              {STAR_PRIZES.map((prize, index) => <article className={`prize-tile prize-tile--${prize.tone}`} key={`${prize.title}-${index}`}><span className="prize-tile__number">0{index + 1}</span><h3 className="display mt-10 text-2xl font-black">{prize.title}</h3><p className="mt-2 text-sm font-semibold opacity-80">{prize.detail}</p></article>)}
+            </div>
+          </div>
+        </section>
+
         <section className="brand-stats py-8">
           <div className="shell grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
             <Stat
@@ -255,7 +268,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                 incertidumbre. Más claridad.
               </p>
               <p className="muted mt-5 text-lg">
-                Cada oportunidad cuesta S/20. Puedes comprar hasta 10 tickets por persona.
+                Cada oportunidad cuesta S/50. Puedes comprar hasta 5 tickets por persona.
               </p>
             </div>
             <div className="mt-12 grid gap-4 lg:grid-cols-3">
@@ -323,8 +336,8 @@ export function Landing({ raffle }: { raffle: Raffle }) {
               ganador.
             </p>
             <p className="muted mt-5 max-w-3xl text-xs leading-5">
-              Precios transparentes: 1 ticket por S/20, 3 por S/60 y 5 por S/100.
-              Límite de compra: 10 tickets por persona.
+              Precios transparentes: 1 ticket por S/50, 3 por S/150 y 5 por S/250.
+              Límite de compra: 5 tickets por persona.
             </p>
           </div>
         </section>

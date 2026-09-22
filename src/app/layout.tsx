@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Sabes cuántas oportunidades existen, cuántas se vendieron y cuántas quedan.",
     url: "/",
     siteName: "YaTeTocaPerú",
-    images: [{ url: "/prize-iphone-17-pro.jpg", alt: "Premio disponible en YaTeTocaPerú" }],
+    images: [{ url: "/changan-x7-plus.jpg", alt: "Changan X7 Plus 2027, premio estelar de YaTeTocaPerú" }],
     type: "website",
     locale: "es_PE",
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "YaTeTocaPerú | Donde ganar es más fácil",
     description: "Cupos limitados y oportunidades visibles.",
-    images: ["/prize-iphone-17-pro.jpg"],
+    images: ["/changan-x7-plus.jpg"],
   },
   robots: {
     index: true,
