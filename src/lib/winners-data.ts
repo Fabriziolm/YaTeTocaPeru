@@ -29,8 +29,6 @@ export async function listPublishedWinners() {
   if (!hasSupabase) return [] as WinnerStory[];
   const rows = await supabaseRequest<Row[]>(
     "/rest/v1/winner_stories?status=eq.published&select=*&order=draw_date.desc",
-    {},
-    false,
   );
   return Promise.all(rows.map(mapWinner));
 }
