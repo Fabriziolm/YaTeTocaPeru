@@ -129,6 +129,17 @@ a {
   background: #ffffff !important;
   color: var(--ink);
 }
+.opportunity-section button:nth-child(1) {
+  background: #fff7d6 !important;
+  border-color: #facc15 !important;
+}
+.opportunity-section button:nth-child(2) {
+  background: #e9f0ff !important;
+}
+.opportunity-section button:nth-child(3) {
+  background: #efffc5 !important;
+  border-color: #b6f500 !important;
+}
 .opportunity-section button.glow {
   border-color: var(--blue) !important;
   box-shadow: 8px 8px 0 var(--blue);
@@ -204,7 +215,8 @@ a {
 }
 .brand-mark__ya {
   grid-area: ya;
-  color: white;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
 }
 .brand-mark__te {
   grid-area: te;
@@ -213,6 +225,8 @@ a {
 .brand-mark__toca {
   color: white;
   font-size: 1.15em;
+  color: var(--blue);
+  text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
 }
 .brand-mark__peru {
   align-self: center;
@@ -227,7 +241,160 @@ a {
   transform: rotate(-2deg);
 }
 .brand-mark--compact {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
+}
+.winners-page {
+  background:
+    radial-gradient(circle at 90% 5%, rgba(182,245,0,.45), transparent 28rem),
+    linear-gradient(135deg, #fff 0%, #eef4ff 100%);
+  color: var(--ink);
+}
+.winners-teaser {
+  background: linear-gradient(120deg, var(--blue), #4c83ff 55%, var(--lime));
+  color: white;
+}
+.winners-teaser__stamp {
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  border: 3px dashed rgba(255,255,255,.8);
+  border-radius: 30px;
+  background: rgba(11,16,32,.12);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 900;
+  transform: rotate(2deg);
+}
+.winners-back {
+  color: var(--blue);
+  font-weight: 800;
+}
+.winners-kicker,
+.winner-kicker {
+  color: var(--blue);
+  font-size: .78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.winners-empty {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border: 2px dashed #b9c9e3;
+  border-radius: 28px;
+  background: rgba(255,255,255,.8);
+  padding: clamp(1.5rem, 5vw, 3rem);
+}
+.winners-empty__mark {
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: none;
+  place-items: center;
+  border-radius: 1.5rem;
+  background: var(--yellow);
+  color: var(--blue);
+  font-size: 2rem;
+}
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.winner-card {
+  overflow: hidden;
+  border: 1px solid #dbe4f0;
+  border-radius: 28px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(37,99,255,.12);
+}
+.winner-card__photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--blue);
+  color: var(--yellow);
+  font-size: 3rem;
+}
+.winner-card__photo img {
+  object-fit: cover;
+}
+.winner-verified,
+.winner-status {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #e9f8b6;
+  padding: .35rem .65rem;
+  color: #345000;
+  font-size: .7rem;
+  font-weight: 900;
+}
+.winner-manager {
+  border-radius: 32px;
+  background: #eef4ff;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  color: var(--ink);
+}
+.winner-manager__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.winner-form {
+  border-radius: 24px;
+  background: white;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+.winner-status {
+  background: #fef3c7;
+  color: #854d0e;
+}
+.winner-status--published {
+  background: #dcfce7;
+  color: #166534;
+}
+.admin-page {
+  background: #f7faff;
+  color: var(--ink);
+}
+.admin-page header {
+  border-color: #dbe4f0;
+  background: #ffffff;
+}
+.admin-page .card {
+  background: #ffffff;
+  border-color: #dbe4f0;
+}
+.admin-page table {
+  background: #ffffff;
+}
+.admin-page thead {
+  background: #eef4ff !important;
+  color: #475569 !important;
+}
+.admin-page tbody {
+  color: var(--ink);
+}
+.admin-page .muted {
+  color: #64748b;
+}
+.admin-page .button-secondary {
+  border-color: #cbd5e1;
+  background: #ffffff;
+  color: var(--ink);
+}
+@media (max-width: 800px) {
+  .winners-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .winners-empty { align-items: flex-start; flex-direction: column; }
+  .winner-manager__head { flex-direction: column; }
 }
 .glow {
   box-shadow:

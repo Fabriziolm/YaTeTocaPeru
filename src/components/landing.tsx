@@ -71,6 +71,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
           <nav className="hidden items-center gap-6 text-sm font-bold text-white md:flex">
             <a href="#como-funciona">Cómo funciona</a>
             <a href="#transparencia">Transparencia</a>
+            <a href="/ganadores">Ganadores</a>
             <MyTickets total={raffle.totalSlots} />
           </nav>
           <a
@@ -277,7 +278,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                       ) : (
                         <span />
                       )}
-                      <Arrow className="text-slate-500 group-hover:text-white" />
+                      <Arrow className="h-5 w-5 shrink-0 text-slate-500 group-hover:text-[#2563ff]" />
                     </div>
                     <p className="display mt-10 text-5xl font-bold">
                       {pack.quantity}
@@ -362,6 +363,33 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         </section>
 
         <section
+          className="section winners-teaser"
+          aria-labelledby="winners-teaser-title"
+        >
+          <div className="shell grid items-center gap-10 lg:grid-cols-[1.15fr_.85fr]">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[.12em] text-[#facc15]">
+                Historias que recién empiezan
+              </p>
+              <h2 id="winners-teaser-title" className="display mt-4 text-4xl font-black sm:text-6xl">
+                Personas reales. Premios reales.
+              </h2>
+              <p className="mt-5 max-w-xl text-lg leading-7 text-blue-50">
+                Aún no hay ganadores publicados. Cuando comiencen las dinámicas,
+                aquí subiremos sus fotos, ciudad y testimonio con total claridad.
+              </p>
+              <a className="button-primary mt-7 inline-flex" href="/ganadores">
+                Ver espacio de ganadores <Arrow className="h-5 w-5" />
+              </a>
+            </div>
+            <div className="winners-teaser__stamp">
+              Aquí aparecerán<br />
+              las próximas historias
+            </div>
+          </div>
+        </section>
+
+        <section
           className="section transparency-section border-y border-slate-200 bg-[#f7faff]"
           id="transparencia"
         >
@@ -378,6 +406,9 @@ export function Landing({ raffle }: { raffle: Raffle }) {
               <div className="mt-7 flex flex-wrap gap-3">
                 <a className="button-secondary" href="/bases">
                   Ver bases legales
+                </a>
+                <a className="button-secondary" href="/ganadores">
+                  Ver ganadores
                 </a>
                 <TicketBrowser total={raffle.totalSlots} />
                 <span
@@ -468,6 +499,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
           <div className="flex gap-5">
             <a href="/bases">Bases legales</a>
             <a href="/privacidad">Privacidad</a>
+            <a href="/ganadores">Ganadores</a>
             <a href="/admin">Administración</a>
           </div>
         </div>

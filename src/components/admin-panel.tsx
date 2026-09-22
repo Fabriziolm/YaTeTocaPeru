@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { money, ticketLabel } from "@/lib/format";
 import { track } from "@/components/analytics";
 import type { AdminOrder } from "@/lib/types";
+import { WinnerManager } from "@/components/winner-manager";
 
 export function AdminPanel({ totalSlots, initialOrders }: { totalSlots: number; initialOrders: AdminOrder[] }) {
   const router = useRouter();
@@ -39,7 +40,7 @@ export function AdminPanel({ totalSlots, initialOrders }: { totalSlots: number; 
     return { pending: orders.filter((order) => order.status === "pending").length, income: validated.reduce((sum, order) => sum + order.amount, 0), sold: validated.reduce((sum, order) => sum + order.quantity, 0) };
   }, [orders]);
 
-  return <div className="min-h-screen bg-[#050914] pb-20">
+  return <div className="admin-page min-h-screen pb-20">
     <header className="border-b border-white/10"><div className="shell flex h-20 items-center justify-between"><div><b className="display">Control de validación</b><span className="ml-3 rounded-full bg-amber-400/10 px-2 py-1 text-xs text-amber-200">Admin</span></div><button onClick={logout} className="text-sm text-slate-400">Cerrar sesión</button></div></header>
     <main className="shell pt-10">
       <div className="grid gap-3 sm:grid-cols-3"><Metric label="Pendientes" value={String(stats.pending)} /><Metric label="Ingresos validados" value={money(stats.income)} /><Metric label="Cupos validados" value={`${stats.sold} / ${totalSlots}`} /></div>
@@ -48,6 +49,7 @@ export function AdminPanel({ totalSlots, initialOrders }: { totalSlots: number; 
       <div className="mt-8 overflow-x-auto rounded-2xl border border-white/10"><table className="w-full min-w-[980px] text-left text-sm"><thead className="bg-white/5 text-slate-400"><tr>{["Código / fecha", "Comprador", "Pago", "Pack", "Estado", "Números", "Acciones"].map((heading) => <th key={heading} className="p-4 font-semibold">{heading}</th>)}</tr></thead><tbody className="divide-y divide-white/8">
         {loading ? <tr><td colSpan={7} className="p-10 text-center text-slate-400">Cargando órdenes…</td></tr> : orders.length === 0 ? <tr><td colSpan={7} className="p-10 text-center text-slate-400">No hay órdenes con este criterio.</td></tr> : orders.map((order) => <tr key={order.id} className="align-top"><td className="p-4"><b>{order.orderCode}</b><span className="muted mt-1 block text-xs">{new Date(order.createdAt).toLocaleString("es-PE")}</span></td><td className="p-4"><b>{order.fullName}</b><span className="muted block">{order.dni} · {order.phone}</span><span className="muted block">{order.email}</span></td><td className="p-4"><b>{money(order.amount)}</b><span className="muted block">Op. {order.paymentOperation}</span>{order.paymentProofUrl && <a href={order.paymentProofUrl} target="_blank" rel="noreferrer" className="text-blue-300 underline">Ver comprobante</a>}</td><td className="p-4">{order.quantity} oportunidades</td><td className="p-4"><Status value={order.status} /></td><td className="p-4">{order.ticketNumbers.length ? order.ticketNumbers.map((number) => ticketLabel(number, totalSlots)).join(", ") : "—"}</td><td className="p-4">{order.status === "pending" ? <div className="flex gap-2"><button disabled={working === order.id} onClick={() => update(order.id, "validated")} className="rounded-lg bg-[#b8ff3d] px-3 py-2 font-bold text-[#071009]">Validar</button><button disabled={working === order.id} onClick={() => update(order.id, "rejected")} className="rounded-lg border border-red-400/30 px-3 py-2 text-red-300">Rechazar</button></div> : order.status === "validated" && <a className="text-emerald-300 underline" target="_blank" rel="noreferrer" href={`https://wa.me/51${order.phone}?text=${encodeURIComponent(`¡Listo! Tu participación fue confirmada.\n\nTus números son:\n${order.ticketNumbers.map((number) => ticketLabel(number, totalSlots)).join("\n")}\n\nCódigo de compra:\n${order.orderCode}\n\nGuarda este mensaje.`)}`}>Enviar por WhatsApp</a>}</td></tr>)}
       </tbody></table></div>
+      <WinnerManager />
     </main>
   </div>;
 }
