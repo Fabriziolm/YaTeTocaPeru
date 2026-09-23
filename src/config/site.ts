@@ -12,7 +12,7 @@ export const PACKS = [
   { id: "value", quantity: 5, price: 220, label: "5 oportunidades", badge: "Tope por persona" },
 ] as const;
 export const STAR_PRIZES = [
-  { title: "Changan X7 Plus 2027", detail: "Premio estelar · S/54,565 referencial", tone: "blue", image: "/changan-x7-plus-cutout.png" },
+  { title: "Changan X7 Plus 2027", detail: "SUV familiar · 7 pasajeros · motor turbo · entrega en Lima", tone: "blue", image: "/changan-x7-plus-cutout.png" },
   { title: "iPhone 17 Pro", detail: "Imagen referencial · equipo nuevo y sellado", tone: "lime", image: "/prize-iphone-17-pro.png" },
   { title: "Viaje a Cusco para dos", detail: "Pasajes y hospedaje · fechas a elección", tone: "yellow", image: "/prize-cusco.png" },
   { title: "S/200", detail: "Premio en efectivo · ganador 1", tone: "coral", image: "/prize-cash-200-clean.png" },
