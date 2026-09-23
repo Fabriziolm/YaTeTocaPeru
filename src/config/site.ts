@@ -8,17 +8,17 @@ export const DEMO_RAFFLE = {
 };
 export const PACKS = [
   { id: "single", quantity: 1, price: 50, label: "1 oportunidad", badge: undefined },
-  { id: "popular", quantity: 3, price: 150, label: "3 oportunidades", badge: "Más elegido" },
-  { id: "value", quantity: 5, price: 250, label: "5 oportunidades", badge: "Tope por persona" },
+  { id: "popular", quantity: 3, price: 130, label: "3 oportunidades", badge: "Más elegido" },
+  { id: "value", quantity: 5, price: 220, label: "5 oportunidades", badge: "Tope por persona" },
 ] as const;
 export const STAR_PRIZES = [
-  { title: "Changan X7 Plus 2027", detail: "Premio estelar · S/54,565 referencial", tone: "blue" },
-  { title: "iPhone 17 Pro", detail: "Equipo nuevo y sellado", tone: "lime" },
-  { title: "Viaje a Cusco para dos", detail: "Pasajes y hospedaje · fechas a elección", tone: "yellow" },
-  { title: "S/200", detail: "Premio en efectivo · ganador 1", tone: "coral" },
-  { title: "S/200", detail: "Premio en efectivo · ganador 2", tone: "coral" },
-  { title: "S/200", detail: "Premio en efectivo · ganador 3", tone: "coral" },
-  { title: "S/200", detail: "Premio en efectivo · ganador 4", tone: "coral" },
+  { title: "Changan X7 Plus 2027", detail: "Premio estelar · S/54,565 referencial", tone: "blue", image: "/changan-x7-plus-cutout.png" },
+  { title: "iPhone 17 Pro", detail: "Imagen referencial · equipo nuevo y sellado", tone: "lime", image: "/prize-iphone-17-pro.png" },
+  { title: "Viaje a Cusco para dos", detail: "Pasajes y hospedaje · fechas a elección", tone: "yellow", image: "/prize-cusco.png" },
+  { title: "S/200", detail: "Premio en efectivo · ganador 1", tone: "coral", image: "/prize-cash-200-clean.png" },
+  { title: "S/200", detail: "Premio en efectivo · ganador 2", tone: "coral", image: "/prize-cash-200-clean.png" },
+  { title: "S/200", detail: "Premio en efectivo · ganador 3", tone: "coral", image: "/prize-cash-200-clean.png" },
+  { title: "S/200", detail: "Premio en efectivo · ganador 4", tone: "coral", image: "/prize-cash-200-clean.png" },
 ] as const;
-export const BRAND = { name: "YaTeTocaPerú", technicalName: "yatetocaperu", tagline: "Donde ganar es más fácil", subtagline: "Premios reales, oportunidades claras.", whatsapp: "51999999999", yapeHolder: "NOMBRE DE EMPRESA", yapeNumber: "999 999 999", legalVersion: "AUTO-2027-01" };
+export const BRAND = { name: "YaTeTocaPerú", technicalName: "yatetocaperu", tagline: "Donde ganar es más fácil", subtagline: "Premios reales, oportunidades claras.", whatsapp: "", yapeHolder: "NOMBRE DE EMPRESA", yapeNumber: "999 999 999", legalVersion: "AUTO-2027-01" };
 export type PackId = (typeof PACKS)[number]["id"];

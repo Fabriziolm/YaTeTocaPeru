@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Analytics, track } from "@/components/analytics";
 import { BrandMark } from "@/components/brand-mark";
+import { CommunityPopup, COMMUNITY_WHATSAPP_URL } from "@/components/community-popup";
 import { Arrow, Check, Shield } from "@/components/icons";
 import { MyTickets } from "@/components/my-tickets";
 import { PhoneVisual } from "@/components/phone-visual";
@@ -50,10 +52,18 @@ const faqs = [
   ],
 ];
 
+function whatsappHref(message: string) {
+  const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
+  return number
+    ? `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+    : `https://wa.me/?text=${encodeURIComponent(message)}`;
+}
+
 export function Landing({ raffle }: { raffle: Raffle }) {
   const [selected, setSelected] = useState<PackId | null>(null);
   const available = Math.max(raffle.totalSlots - raffle.soldSlots, 0);
   const progress = Math.min(100, (raffle.soldSlots / raffle.totalSlots) * 100);
+  const selectedPack = PACKS.find((pack) => pack.id === selected) ?? null;
   const choose = (id: PackId) => {
     const pack = PACKS.find((item) => item.id === id);
     if (!pack || pack.quantity > available) return;
@@ -72,6 +82,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
             <a href="#como-funciona">Cómo funciona</a>
             <a href="#transparencia">Transparencia</a>
             <a href="/ganadores">Ganadores</a>
+            <a href={COMMUNITY_WHATSAPP_URL} target="_blank" rel="noreferrer" className="community-nav-link">Comunidad ↗</a>
             <MyTickets total={raffle.totalSlots} />
           </nav>
           <a
@@ -97,6 +108,10 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                   </span>
                 )}
               </div>
+              <a className="community-strip mb-6" href={COMMUNITY_WHATSAPP_URL} target="_blank" rel="noreferrer">
+                <span className="community-strip__dot" aria-hidden="true" />
+                Sigue WhatsApp + Instagram + TikTok · participa por un viaje + scooter <span aria-hidden>↗</span>
+              </a>
               <h1 className="display max-w-3xl text-[clamp(3.2rem,8vw,7rem)] font-black leading-[.88] tracking-[-.065em]">
                 Donde ganar<br />es más fácil.
               </h1>
@@ -235,8 +250,8 @@ export function Landing({ raffle }: { raffle: Raffle }) {
             <div className="prize-board__grid mt-10">
               {STAR_PRIZES.map((prize, index) => <article className={`prize-tile prize-tile--${prize.tone} ${index === 0 ? "prize-tile--star" : ""}`} key={`${prize.title}-${index}`}>
                 <div className="prize-tile__top"><span className="prize-tile__number">0{index + 1}</span><span className="prize-tile__dot" aria-hidden="true" /></div>
-                {index === 0 && <div className="prize-tile__media"><img src="/changan-x7-plus-cutout.png" alt="Changan X7 Plus 2027" /></div>}
-                <div className="prize-tile__copy"><h3 className="display text-2xl font-black">{prize.title}</h3><p className="mt-2 text-sm font-semibold">{prize.detail}</p></div>
+                {prize.image && <div className="prize-tile__media"><img src={prize.image} alt={`${prize.title} · imagen referencial`} /></div>}
+                <div className="prize-tile__copy"><h3 className="display text-2xl font-black">{prize.title}</h3><p className="mt-2 text-sm font-semibold">{prize.detail}</p><a className="prize-tile__cta" href={whatsappHref(`Hola, quiero consultar por el premio ${prize.title} de YaTeToca Perú.`)} target="_blank" rel="noreferrer">Consultar premio <Arrow className="h-4 w-4" /></a></div>
               </article>)}
             </div>
           </div>
@@ -263,7 +278,8 @@ export function Landing({ raffle }: { raffle: Raffle }) {
 
         <section className="section opportunity-section" id="packs">
           <div className="shell">
-            <div className="max-w-2xl">
+            <div className="opportunity-intro">
+              <div className="opportunity-intro__copy max-w-2xl">
               <h2 className="display max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-[4.25rem]">
                 Elige cuántas oportunidades quieres ver a tu nombre.
               </h2>
@@ -274,6 +290,11 @@ export function Landing({ raffle }: { raffle: Raffle }) {
               <p className="muted mt-5 text-lg">
                 Cada oportunidad cuesta S/50. Puedes comprar hasta 5 tickets por persona.
               </p>
+              <a className="whatsapp-cta mt-5" href={whatsappHref("Hola, tengo dudas sobre las oportunidades de YaTeToca Perú.")} target="_blank" rel="noreferrer">
+                ¿Tienes dudas? Escríbenos por WhatsApp <Arrow className="h-4 w-4" />
+              </a>
+              </div>
+              <Image className="opportunity-ticket-art" src="/ticket-opportunity.png" alt="Elige tu ticket y participa" width={300} height={300} priority />
             </div>
             <div className="packs-grid mt-12 grid gap-4 lg:grid-cols-3">
               {PACKS.map((pack, index) => {
@@ -283,7 +304,8 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                     key={pack.id}
                     disabled={disabled}
                     onClick={() => choose(pack.id)}
-                    className={`pack-card group relative overflow-hidden text-left transition-transform enabled:hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-45 ${index === 1 ? "pack-card--featured" : ""}`}
+                    aria-label={`Añadir al carrito: ${pack.quantity} ${pack.quantity === 1 ? "ticket" : "tickets"} por ${money(pack.price)}`}
+                    className={`pack-card group relative overflow-hidden text-left transition-transform enabled:hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-45 ${index === 1 ? "pack-card--featured" : ""} ${selected === pack.id ? "pack-card--selected" : ""}`}
                   >
                     <div className="flex min-h-7 justify-between">
                       {pack.badge ? (
@@ -295,7 +317,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                       ) : (
                         <span />
                       )}
-                      <Arrow className="h-5 w-5 shrink-0 text-slate-500 group-hover:text-[#2563ff]" />
+                      <span className="pack-card__cart"><span aria-hidden>🛒</span> Añadir</span>
                     </div>
                     <p className="display mt-10 text-5xl font-bold">
                       {pack.quantity}
@@ -334,30 +356,52 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                 );
               })}
             </div>
+            {selectedPack && (
+              <div className="pack-summary mt-6">
+                <div>
+                  <span className="pack-summary__eyebrow">Tu selección</span>
+                  <strong>{selectedPack.quantity} {selectedPack.quantity === 1 ? "ticket" : "tickets"} · {money(selectedPack.price)}</strong>
+                  <span className="pack-summary__note">Te asignaremos números únicos después de validar tu pago.</span>
+                </div>
+                <a className="button-primary" href={whatsappHref(`Hola, quiero participar con ${selectedPack.quantity} ticket${selectedPack.quantity === 1 ? "" : "s"} por ${money(selectedPack.price)} en YaTeToca Perú.`)} target="_blank" rel="noreferrer">
+                  Consultar este pack <Arrow className="h-4 w-4" />
+                </a>
+              </div>
+            )}
             <p className="muted mt-5 hidden max-w-3xl text-xs leading-5">
               La probabilidad es una relación matemática entre oportunidades
               adquiridas y oportunidades totales. No garantiza un resultado
               ganador.
             </p>
             <p className="muted mt-5 max-w-3xl text-xs leading-5">
-              Precios transparentes: 1 ticket por S/50, 3 por S/150 y 5 por S/250.
+              Precios transparentes: 1 ticket por S/50, 3 por S/130 y 5 por S/220.
               Límite de compra: 5 tickets por persona.
             </p>
           </div>
         </section>
 
+        <a className="whatsapp-cta mt-6" href={whatsappHref("Hola, quiero conocer los packs de YaTeToca Perú.")} target="_blank" rel="noreferrer">
+          Consultar packs por WhatsApp <Arrow className="h-4 w-4" />
+        </a>
+
         <section className="section" id="como-funciona">
           <div className="shell">
-            <h2 className="display text-4xl font-bold sm:text-6xl">
-              Cuatro pasos. Sin zonas grises.
-            </h2>
-            <div className="mt-12 grid gap-px overflow-hidden rounded-[28px] border border-white/10 bg-white/10 md:grid-cols-4">
+            <div className="steps-intro">
+              <div>
+                <p className="reveal-kicker">El camino es claro</p>
+                <h2 className="display mt-3 text-4xl font-bold sm:text-6xl">
+                  4 pasos para acercarte a tu auto 0 km.
+                </h2>
+              </div>
+              <Image className="steps-mascot" src="/community-teaser.png" alt="Algo increíble viene en camino" width={240} height={240} />
+            </div>
+            <div className="steps-grid mt-10 grid gap-4 md:grid-cols-4">
               {[
                 [
                   "Elige tus oportunidades",
                   "Compara los packs y revisa la probabilidad.",
                 ],
-                ["Paga mediante Yape", "Usa el QR y conserva tu operación."],
+                ["Paga con Yape o tarjeta", "Elige tu medio de pago en el carrito y conserva tu comprobante."],
                 [
                   "Confirmamos tu pago",
                   "Una persona revisa el abono antes de aprobarlo.",
@@ -367,7 +411,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                   "Se asignan automáticamente, sin duplicados.",
                 ],
               ].map((step, i) => (
-                <article key={step[0]} className="bg-white p-7 text-[#0b1020]">
+                <article key={step[0]} className="steps-card bg-white p-7 text-[#0b1020]">
                   <span className="display text-5xl font-bold text-blue-500/35">
                     0{i + 1}
                   </span>
@@ -428,6 +472,9 @@ export function Landing({ raffle }: { raffle: Raffle }) {
                   Ver ganadores
                 </a>
                 <TicketBrowser total={raffle.totalSlots} />
+                <a className="button-secondary whatsapp-button" href={whatsappHref("Hola, quiero consultar el estado del sorteo YaTeToca Perú.")} target="_blank" rel="noreferrer">
+                  Consultar por WhatsApp
+                </a>
                 <span
                   className="button-secondary cursor-not-allowed opacity-50"
                   aria-disabled="true"
@@ -489,7 +536,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
           </div>
         </section>
 
-        <section className="campaign-kit section" aria-labelledby="campaign-kit-title">
+        <section hidden className="campaign-kit section" aria-labelledby="campaign-kit-title">
           <div className="shell campaign-kit__inner">
             <div>
               <p className="text-sm font-black text-[#2563ff]">Kit de campaña</p>
@@ -543,6 +590,7 @@ export function Landing({ raffle }: { raffle: Raffle }) {
         selected={selected}
         onClose={() => setSelected(null)}
       />
+      <CommunityPopup />
     </>
   );
 }
